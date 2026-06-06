@@ -1,4 +1,5 @@
-# [WRITTES](https://writtes.com) ### An article writting and sharing web platform with secured authentication
+# [WRITTES](https://writtes.com) 
+### An article writting and sharing web platform with secured authentication
 
 ## Table of Contents
 
