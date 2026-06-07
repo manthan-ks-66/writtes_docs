@@ -139,4 +139,8 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 - Server validates the password match & generates `accessToken` & `refreshToken` for login
 - Server sends the respones with user tokens to client (browser cookie)
 
+#### Flow Diagram
+
 ![alt text](./images/login_system.png)
+
+
