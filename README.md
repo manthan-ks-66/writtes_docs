@@ -11,7 +11,6 @@
 - [Features](#features)
 - [Authentication Flow](#authentication-flow)
 - [Token Refresh Interceptor](#token-refresh-interceptor-axios)
-- [File Upload Pipeline](#file-upload-pipeline-multer--imagekit)
 - [Roadmap](#roadmap)
 
 ## About
@@ -129,6 +128,10 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 
 ### Login Flow
 
+#### Flow Diagram
+
+![alt text](./images/login_system.png)
+
 - User submits credentials (username/email + password)
 - Client validates the fields and sends a login request to the server
 - Server validates the credentials and finds the user from the db
@@ -136,10 +139,6 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 - Bcrypt matches the credential password with the db password
 - Server validates the password match & generates `accessToken` & `refreshToken` for login
 - Server sends the respones with user tokens to client (browser cookie)
-
-#### Flow Diagram
-
-![alt text](./images/login_system.png)
 
 ### Axios Interceptor Flow
 
@@ -155,3 +154,31 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 - Client receives the new accessToken -> Axios Interceptor retries the failed requests from failedQueue
 - All queued requests are resolved with new accessToken
 - Client receives responses for the requests made
+
+## Roadmap
+
+### v0 — Current working features
+
+- JWT auth with token rotation
+- OTP email verification
+- Google OAuth
+- Like / Unlike Post
+- Paginated feed + search
+- Avatar + profile update
+- Axios token refresh interceptor
+- Docker + Nginx deployment on DigitalOcean Droplet
+
+### v1 — (In Development)
+
+- Lexical editor Integration (in progress)
+- Post View Counts
+- Post CRUD
+
+### v2 — Planned
+
+- Comment system (schema prepared)
+- Comment likes
+- Follow / unfollow authors
+- Author dashboard with analytics
+- Email newsletter / subscriber system
+- Post bookmarks / reading list
