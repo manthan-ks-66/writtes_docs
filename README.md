@@ -90,7 +90,7 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 - Forgot Password via OTP email flow
 - Google OAuth 2.0 login & registration integration
 - Bcrypt password hashing
-- Secure httpOnly cookie based refresh token storage
+- Secure httpOnly cookie based token storage
 
 ### User Features
 
@@ -106,3 +106,27 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 - Paginated blog post feed with configurable page size in browser URL
 - Paginated search results
 - Post aggregation with author info & like status in a single DB query
+
+## Authentication Flow
+
+### Registration Flow
+
+#### Control - 1
+
+- User submits essential informations - username, password, email, fullName
+- Client validates form data and sends registration request to server
+- server validates & creates a user document in the atlas
+- server generates the one time passcode and saves to the user document
+- server delivers the one time passcode to the registered email for verification
+- server generates JWT `verificationToken` and sends the token to the client (browser cookie)
+
+#### Control - 2
+
+- User submits the verification one time passcode
+- Client validates the passcode and sends verification request to server
+- server validates passcode & `verificationToken`
+- server decodes the `verificationToken` and finds the user
+- server validates the one time passcode and its expiry
+- server generates `accessToken` & `refreshToken` and sends the tokens to the client (browser cookie)
+
+### Login Flow
