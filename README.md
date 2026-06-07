@@ -75,9 +75,9 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 - Denormalized `likesCount` and `commentsCount` on posts — avoids expensive count queries on every feed load, updated atomically on like/unlike
 - `authProvider` as enum — cleanly distinguishes local vs Google OAuth users
 
-## System Architecture Diagram
+## System Architecture Flow
 
-![alt text](./images/system_architecture.png)
+![alt text](./images/sys_architecture.png)
 
 ## Features
 
