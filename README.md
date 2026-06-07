@@ -1,4 +1,5 @@
-# [WRITTES](https://writtes.com) 
+# [WRITTES](https://writtes.com)
+
 ### An article writting and sharing web platform with secured authentication
 
 ## Table of Contents
@@ -54,9 +55,13 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 
 ## DataBase Design
 
+### ER - Diagram
+
 ![alt text](./images/er_digram.png)
 
-## System Architecture
+###
+
+## System Architecture Diagram
 
 ![alt text](./images/system_architecture.png)
 
@@ -66,16 +71,16 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 
 ### Authentication System
 
-- Register & Login with **JWT Access & Refresh Token** rotation system
-- **OTP-based email verification** on registration
-- **Forgot Password** via OTP email flow
-- **Google OAuth 2.0** login & registration integration
-- **Bcrypt** password hashing
-- Secure **httpOnly cookie** based refresh token storage
+- Register & Login with JWT Access & Refresh Token rotation system
+- OTP-based email verification on registration
+- Forgot Password via OTP email flow
+- Google OAuth 2.0 login & registration integration
+- Bcrypt password hashing
+- Secure httpOnly cookie based refresh token storage
 
 ### User Features
 
-- Avatar upload via **Multer to ImageKit** pipeline
+- Avatar upload via Multer to ImageKit pipeline
 - Profile update — bio, about, social links
 - User public profile page (as author)
 
@@ -84,6 +89,6 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 - Read blog posts uploaded for demo use case
 - Like / Unlike posts
 - User liked posts list
-- **Paginated** blog post feed with configurable page size in browser URL
-- **Paginated search** results
-- Post aggregation with **author info & like status** in a single DB query
+- Paginated blog post feed with configurable page size in browser URL
+- Paginated search results
+- Post aggregation with author info & like status in a single DB query
