@@ -145,13 +145,13 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 
 ![alt text](./images/interceptor_flow.png)
 
-```
-1. req-1 sent by client → Axios interceptor attaches access token
-2. Server responds with 401 (access token expired)
-3. Interceptor catches 401 → marks isRefreshing = true
-4. Subsequent requests (req-2, req-3...) are pushed to failedQueue
-5. Interceptor calls /refresh-token endpoint with refresh token cookie
-6. New access token received → failedQueue requests retried
-7. All queued requests resolve with the new token
-8. Client receives responses as if nothing happened
-```
+### Working of silent token refresh
+
+- Client sends req-1 to the server with accessToken attached
+- Axios intercepts the request when the server throws `401` unauthorized due to accessToken expiry
+- Subsequent requests (req-2, req-3, ...) are pushed to failedQueue (array)
+- Axios calls the `/refresh-access-token` end point with refreshToken in the cookie
+- Server validates the refreshToken - generates and sends new accessToken & refreshToken
+- Client receives the new accessToken -> Axios Interceptor retries the failed requests from failedQueue
+- All queued requests are resolved with new accessToken
+- Client receives responses for the requests made
