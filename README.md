@@ -4,17 +4,17 @@
 
 ## Table of Contents
 
-- [About](#-about)
-- [Tech Stack](#-tech-stack)
-- [Database Design](#-database-design)
-- [System Architecture](#-system-architecture)
-- [Features](#-features)
-- [Authentication Flow](#-authentication-flow)
-- [Token Refresh Interceptor](#-token-refresh-interceptor-axios)
-- [File Upload Pipeline](#-file-upload-pipeline-multer--imagekit)
-- [MongoDB Aggregation Pipeline](#-mongodb-aggregation-pipeline)
-- [Project Structure](#-project-structure)
-- [Roadmap](#-roadmap)
+- [About](#about)
+- [Tech Stack](#tech-stack)
+- [Database Design](#database-design)
+- [System Architecture](#system-architecture-diagram)
+- [Features](#features)
+- [Authentication Flow](#authentication-flow)
+- [Token Refresh Interceptor](#token-refresh-interceptor-axios)
+- [File Upload Pipeline](#file-upload-pipeline-multer--imagekit)
+- [MongoDB Aggregation Pipeline](#mongodb-aggregation-pipeline)
+- [Project Structure](#project-structure)
+- [Roadmap](#roadmap)
 
 ## About
 
@@ -59,7 +59,21 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 
 ![alt text](./images/er_digram.png)
 
-###
+### Collections Overview
+
+| Collection     | Purpose                                                     |
+| -------------- | ----------------------------------------------------------- |
+| `users`        | Stores user credentials, profile, OAuth info, passcode(otp) |
+| `posts`        | Blog posts with metadata, slug, and counters                |
+| `comments`     | Comments linked to posts and users                          |
+| `postLikes`    | Junction collection tracking which user liked which post    |
+| `commentLikes` | Junction collection tracking likes on comments              |
+
+### Key Design Decisions
+
+- `postLikes` and `commentLikes` as separate collections — enables efficient querying of "did this user like this post" without scanning embedded arrays, and allows paginated like lists
+- Denormalized `likesCount` and `commentsCount` on posts — avoids expensive count queries on every feed load, updated atomically on like/unlike
+- `authProvider` as enum — cleanly distinguishes local vs Google OAuth users
 
 ## System Architecture Diagram
 
