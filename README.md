@@ -10,7 +10,7 @@
 - [System Architecture](#system-architecture-diagram)
 - [Features](#features)
 - [Authentication Flow](#authentication-flow)
-- [Token Refresh Interceptor](#token-refresh-interceptor-axios)
+- [Axios Interceptor Flow](#axios-interceptor-flow)
 - [Roadmap](#roadmap)
 
 ## About
