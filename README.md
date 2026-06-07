@@ -115,18 +115,28 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 
 - User submits essential informations - username, password, email, fullName
 - Client validates form data and sends registration request to server
-- server validates & creates a user document in the atlas
-- server generates the one time passcode and saves to the user document
-- server delivers the one time passcode to the registered email for verification
-- server generates JWT `verificationToken` and sends the token to the client (browser cookie)
+- Server validates & creates a user document in the atlas
+- Server generates the one time passcode and saves to the user document
+- Server delivers the one time passcode to the registered email for verification
+- Server generates JWT `verificationToken` and sends the token to the client (browser cookie)
 
 #### Control - 2
 
 - User submits the verification one time passcode
 - Client validates the passcode and sends verification request to server
-- server validates passcode & `verificationToken`
-- server decodes the `verificationToken` and finds the user
-- server validates the one time passcode and its expiry
-- server generates `accessToken` & `refreshToken` and sends the tokens to the client (browser cookie)
+- Server validates passcode & `verificationToken`
+- Server decodes the `verificationToken` and finds the user
+- Server validates the one time passcode and its expiry
+- Server generates `accessToken` & `refreshToken` and sends the tokens to the client (browser cookie)
 
 ### Login Flow
+
+- User submits credentials (username/email + password)
+- Client validates the fields and sends a login request to the server
+- Server validates the credentials and finds the user from the db
+- Server calls the bcrypt password match method
+- Bcrypt matches the credential password with the db password
+- Server validates the password match & generates `accessToken` & `refreshToken` for login
+- Server sends the respones with user tokens to client (browser cookie)
+
+![alt text](./images/login_system.png)
