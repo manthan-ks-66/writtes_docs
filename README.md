@@ -12,8 +12,6 @@
 - [Authentication Flow](#authentication-flow)
 - [Token Refresh Interceptor](#token-refresh-interceptor-axios)
 - [File Upload Pipeline](#file-upload-pipeline-multer--imagekit)
-- [MongoDB Aggregation Pipeline](#mongodb-aggregation-pipeline)
-- [Project Structure](#project-structure)
 - [Roadmap](#roadmap)
 
 ## About
@@ -143,4 +141,17 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 
 ![alt text](./images/login_system.png)
 
+### Axios Interceptor Flow
 
+![alt text](./images/interceptor_flow.png)
+
+```
+1. req-1 sent by client → Axios interceptor attaches access token
+2. Server responds with 401 (access token expired)
+3. Interceptor catches 401 → marks isRefreshing = true
+4. Subsequent requests (req-2, req-3...) are pushed to failedQueue
+5. Interceptor calls /refresh-token endpoint with refresh token cookie
+6. New access token received → failedQueue requests retried
+7. All queued requests resolve with the new token
+8. Client receives responses as if nothing happened
+```
