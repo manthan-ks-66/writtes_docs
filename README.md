@@ -15,9 +15,9 @@
 
 ## About
 
-WRITTES is a full-stack blog writing and sharing web platform currently in development with a focus on security and developer-grade architecture. It features a JWT-based token rotation authentication system, cloud-based media management via ImageKit, a rich text editor powered by Lexical which is currently in development, and a MongoDB aggregation-driven post feed.
+WRITTES is a full-stack blog writing and sharing web platform currently in development with a focus on security and developer-grade architecture. It features JWT-based token rotation auth system, cloud-based media management via ImageKit, a rich text editor powered by Lexical which is currently in development, MongoDB aggregation-based post feeds.
 
-> Source code is private. This repository documents the architecture, design decisions, and system flows.
+> Source code is private. This repository documents the architecture, tech stack, design decisions, and system flows.
 
 ## Tech Stack
 
