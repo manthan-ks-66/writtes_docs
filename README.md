@@ -10,6 +10,7 @@
 - [System Architecture](#system-architecture-diagram)
 - [Features](#features)
 - [Authentication Flow](#authentication-flow)
+- [HTTP Communication Flow](#http-communicaton-flow)
 - [Axios Interceptor Flow](#axios-interceptor-flow)
 - [Roadmap](#roadmap)
 
@@ -120,7 +121,7 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 #### Control - 2
 
 - User submits the verification one time passcode
-- Client validates the passcode and sends verification request to server
+- Client validates the passcode and sends verification request to server with the `verificationToken` in the cookie
 - Server validates passcode & `verificationToken`
 - Server decodes the `verificationToken` and finds the user
 - Server validates the one time passcode and its expiry
@@ -139,6 +140,16 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 - Bcrypt matches the credential password with the db password
 - Server validates the password match & generates `accessToken` & `refreshToken` for login
 - Server sends the respones with user tokens to client (browser cookie)
+
+## HTTP Communicaton Flow
+
+### File Upload Flow
+
+The file management is handled by the multer middleware, because express parses nothing by default middlewares manage the data parsing while http requests are made with the data to the server. So Multer middleware intercepts the http requests and handles the incoming raw bytes of the file.
+
+### Multer Working Diagram
+
+![alt text](./images/multer_working.png)
 
 ### Axios Interceptor Flow
 
