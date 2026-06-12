@@ -9,9 +9,11 @@
 - [Database Design](#database-design)
 - [System Architecture](#system-architecture-diagram)
 - [Features](#features)
-- [Authentication Flow](#authentication-flow)
-- [HTTP Communication Flow](#http-communicaton-flow)
-- [Axios Interceptor Flow](#axios-interceptor-flow)
+- [Backend Working](#backend-working)
+  - [Authentication Flow](#authentication-flow)
+  - [HTTP Communication Flow](#http-communicaton-flow)
+- [Frontend Working](#frontend-working)
+  - [Axios Interceptor Flow](#axios-interceptor-flow)
 - [Roadmap](#roadmap)
 
 ## About
@@ -105,11 +107,13 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 - Paginated search results
 - Post aggregation with author info & like status in a single DB query
 
-## Authentication Flow
+## Backend Working
 
-### Registration Flow
+### Authentication Flow
 
-#### Control - 1
+#### Registration Flow
+
+##### Control - 1
 
 - User submits essential informations - username, password, email, fullName
 - Client validates form data and sends registration request to server
@@ -118,7 +122,7 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 - Server delivers the one time passcode to the registered email for verification
 - Server generates JWT `verificationToken` and sends the token to the client (browser cookie)
 
-#### Control - 2
+##### Control - 2
 
 - User submits the verification one time passcode
 - Client validates the passcode and sends verification request to server with the `verificationToken` in the cookie
@@ -127,9 +131,9 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 - Server validates the one time passcode and its expiry
 - Server generates `accessToken` & `refreshToken` and sends the tokens to the client (browser cookie)
 
-### Login Flow
+#### Login Flow
 
-#### Flow Diagram
+##### Flow Diagram
 
 ![alt text](./images/login_system.png)
 
@@ -141,15 +145,17 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 - Server validates the password match & generates `accessToken` & `refreshToken` for login
 - Server sends the respones with user tokens to client (browser cookie)
 
-## HTTP Communicaton Flow
+### HTTP Communicaton Flows
 
-### File Upload Flow
+#### File Upload Flow
+
+#### Multer Working Diagram
+
+![alt text](./images/multer_working.png)
 
 The file management is handled by the multer middleware, because express parses nothing by default middlewares manage the data parsing while http requests are made with the data to the server. So Multer middleware intercepts the http requests and handles the incoming raw bytes of the file.
 
-### Multer Working Diagram
-
-![alt text](./images/multer_working.png)
+## Frontend Working
 
 ### Axios Interceptor Flow
 
