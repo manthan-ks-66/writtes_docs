@@ -23,6 +23,7 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 > Source code is private. This repository documents the architecture, tech stack, design decisions, and system flows.
 
 > Demo account details for testing the project
+
 > username: tester
 > password: Test@123
 
