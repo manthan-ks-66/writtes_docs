@@ -5,6 +5,7 @@
 ## Table of Contents
 
 - [About](#about)
+- [Demo Access](#demo-access)
 - [Tech Stack](#tech-stack)
 - [Database Design](#database-design)
 - [System Architecture](#system-architecture-diagram)
@@ -22,10 +23,10 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 
 > Source code is private. This repository documents the architecture, tech stack, design decisions, and system flows.
 
-> Demo account details for testing the project
+## Demo Access
 
-> username: tester
-> password: Test@123
+- username: tester
+- password: Test@123
 
 ## Tech Stack
 
