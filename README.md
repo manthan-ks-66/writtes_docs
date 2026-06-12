@@ -149,11 +149,11 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 
 #### File Upload Flow
 
+The file management is handled by the multer middleware, because express parses nothing by default middlewares manage the data parsing while http requests are made with the data to the server. So Multer middleware intercepts the http requests and handles the incoming raw bytes of the file.
+
 #### Multer Working Diagram
 
 ![alt text](./images/multer_working.png)
-
-The file management is handled by the multer middleware, because express parses nothing by default middlewares manage the data parsing while http requests are made with the data to the server. So Multer middleware intercepts the http requests and handles the incoming raw bytes of the file.
 
 ## Frontend Working
 
