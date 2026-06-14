@@ -1,6 +1,6 @@
 # [WRITTES](https://writtes.com)
 
-### An article writting and sharing web platform with secured authentication
+### An article writing and sharing web platform with secure authentication
 
 ## Table of Contents
 
@@ -43,9 +43,9 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 
 - Express JS
 - Bcrypt
-- Json Web Token
+- JSON Web Token (JWT)
 - Mongoose ODM
-- Multer JS
+- Multer
 - Resend Mail Service
 
 ### Database
@@ -59,9 +59,9 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 - Nginx
 - DigitalOcean Droplet
 
-## DataBase Design
+## Database Design
 
-### ER - Diagram
+### ER diagram
 
 ![alt text](./images/er_digram.png)
 
@@ -77,8 +77,8 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 
 ### Key Design Decisions
 
-- `postLikes` and `commentLikes` as separate collections — enables efficient querying of "did this user like this post" without scanning embedded arrays, and allows paginated like lists
-- Denormalized `likesCount` and `commentsCount` on posts — avoids expensive count queries on every feed load, updated atomically on like/unlike
+- `postLikes` and `commentLikes` as separate collections, provides efficient querying of "did this user like this post" without scanning embedded arrays, and allows paginated like lists
+- `likesCount` and `commentsCount` are denormalized on posts to avoid expensive count queries on every feed load, updated atomically on like/unlike
 - `authProvider` as enum — cleanly distinguishes local vs Google OAuth users
 
 ## System Architecture Flow
@@ -96,7 +96,7 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 - Forgot Password via OTP email flow
 - Google OAuth 2.0 login & registration integration
 - Bcrypt password hashing
-- Secure httpOnly cookie based token storage
+- Secure httpOnly cookie-based token storage
 
 ### User Features
 
@@ -121,7 +121,7 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 
 ##### Control - 1
 
-- User submits essential informations - username, password, email, fullName
+- User submits essential information - username, password, email, fullName
 - Client validates form data and sends registration request to server
 - Server validates & creates a user document in the atlas
 - Server generates the one time passcode and saves to the user document
@@ -149,15 +149,15 @@ WRITTES is a full-stack blog writing and sharing web platform currently in devel
 - Server calls the bcrypt password match method
 - Bcrypt matches the credential password with the db password
 - Server validates the password match & generates `accessToken` & `refreshToken` for login
-- Server sends the respones with user tokens to client (browser cookie)
+- Server sends the response with user tokens to client (browser cookie)
 
-### HTTP Communicaton Flows
+### HTTP Communication Flows
 
 #### File Upload Flow
 
 The file management is handled by the multer middleware, because express parses nothing by default middlewares manage the data parsing while http requests are made with the data to the server. So Multer middleware intercepts the http requests and handles the incoming raw bytes of the file.
 
-#### Multer Working Diagram
+#### Multer Flow Diagram
 
 ![alt text](./images/multer_working.png)
 
